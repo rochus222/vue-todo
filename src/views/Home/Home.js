@@ -1,11 +1,3 @@
-<template>
-  <div class="home">
-    <ListAdder @new="addTodoList" />
-    <ListViewer title="Todo Lists" :items="getTodoLists" link="/todo/"/>
-  </div>
-</template>
-
-<script>
 // @ is an alias to /src
 import ListAdder from "@/components/ListAdder.vue";
 import ListViewer from "@/components/ListViewer.vue";
@@ -31,10 +23,3 @@ export default {
     console.log('app created!')
   }
 };
-</script>
-
-<style lang="less">
-  li {
-
-  }
-</style>

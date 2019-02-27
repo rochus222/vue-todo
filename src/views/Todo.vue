@@ -1,5 +1,5 @@
 <template>
-  <div class="todo">
+  <div class="box">
     <router-link to="/">back to homepage</router-link>
     <br>
     <h1>Todo list: {{id}}</h1>
