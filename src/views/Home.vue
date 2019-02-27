@@ -1,18 +1,40 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ListAdder @new="addTodoList" />
+    <ListViewer title="Todo Lists" :items="getTodoLists" link="/todo/"/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import ListAdder from "@/components/ListAdder.vue";
+import ListViewer from "@/components/ListViewer.vue";
+import { mapGetters } from 'vuex'
 
 export default {
   name: "home",
   components: {
-    HelloWorld
+    ListAdder,
+    ListViewer
+  },
+  computed: {
+    ...mapGetters([
+      'getTodoLists'
+    ])
+  },
+  methods: {
+    addTodoList(item) {
+      this.getTodoLists.push(item)
+    }
+  },
+  created() {
+    console.log('app created!')
   }
 };
 </script>
+
+<style lang="less">
+  li {
+
+  }
+</style>
