@@ -13,11 +13,12 @@ export default new Vuex.Store({
       state.todoLists.push(name);
     },
     setItemToList(state, data) {
-      if (!state.items[data.list]) {
-        state.items[data.list] = [];
+      const newState = Object.assign({}, state);
+      if (!newState.items[data.list]) {
+        Vue.set(newState.items, data.list, []);
       }
 
-      state.items[data.list].push(data.item);
+      newState.items[data.list].push(data.item);
     }
   },
   getters: {
@@ -30,12 +31,14 @@ export default new Vuex.Store({
   },
   actions: {
     createTodoList({commit}, name) {
-      commit("setTodoList", name)
-      return true;
+      return commit("setTodoList", name);
     },
     addItemToList({commit}, data) {
-      commit("setItemToList", data)
-      return true;
+      return commit({
+        type: "setItemToList",
+        list: data.list,
+        item: data.item
+      });
     }
   }
 });

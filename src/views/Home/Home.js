@@ -1,7 +1,7 @@
 // @ is an alias to /src
 import ListAdder from "@/components/ListAdder.vue";
 import ListViewer from "@/components/ListViewer.vue";
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: "home",
@@ -15,9 +15,9 @@ export default {
     ])
   },
   methods: {
-    addTodoList(item) {
-      this.getTodoLists.push(item)
-    }
+    ...mapActions({
+      addTodoList: 'createTodoList'
+    })
   },
   created() {
     console.log('app created!')
